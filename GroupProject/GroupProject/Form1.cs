@@ -34,16 +34,17 @@ namespace GroupProject {
         private void StartBtn_Click(object sender, EventArgs e) {
             // 1 = Coin Game
             if (SelectedGame == 1) {
+                // Shows new form
                 Form GameForm = new Two_Up();
                 GameForm.Show();
-                // Hides the current form
-                this.Hide();
+                // Use close not hide to stop mem leaks and multiple spawns of the same form
+                this.Close();
 
             // 2 = Dice Game Selection
             } else if (SelectedGame == 2) {
                 Form GameForm = new Which_Dice_Game();
                 GameForm.Show();
-                this.Hide();
+                this.Close();
 
             // 3 = Card Game Selection
             } else if (SelectedGame == 3) {

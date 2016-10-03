@@ -7,26 +7,29 @@ using Low_Level_Objects_Library;
 
 namespace Games_Logib_Library {
     public static class TwoUpGame {
-
+        // Defines variables
         static public Coin coin1;
         static public Coin coin2;
         static public int playerScore;
         static public int computerScore;
 
+        // Initialises variables
+        // TODO XML comments
         public static void SetUpGame() {
-            // Initialises variables
             coin1 = new Coin();
             coin2 = new Coin();
             playerScore = 0;
             computerScore = 0;
         }
 
+        // Flip tha coins
         public static void TossCoins() {
             // flips coins
             coin1.Flip();
             coin2.Flip();
         }
 
+        // Check the outcome and update scores
         public static string TossOutcome() {
             string result;
             if (coin1.IsHeads() && coin2.IsHeads()) {
@@ -41,6 +44,7 @@ namespace Games_Logib_Library {
             return result;
         }
 
+        // Checks if coins are heads, used for updating images
         public static bool isHeads(int whichCoin) {
             bool heads = true;
             if (whichCoin == 1) {
