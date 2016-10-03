@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GroupProject {
-    public partial class Swenty_One : Form {
-        public Swenty_One() {
+    public partial class Twenty_One : Form {
+        public Twenty_One() {
             InitializeComponent();
         }
     }

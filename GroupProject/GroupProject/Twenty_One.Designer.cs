@@ -1,5 +1,5 @@
 ﻿namespace GroupProject {
-    partial class Swenty_One {
+    partial class Twenty_One {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,9 +23,18 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // Twenty_One
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Swenty_One";
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "Twenty_One";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Twenty_One";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

@@ -25,10 +25,10 @@
         private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.CoinGame = new System.Windows.Forms.RadioButton();
-            this.DiceGame = new System.Windows.Forms.RadioButton();
             this.CardGame = new System.Windows.Forms.RadioButton();
+            this.DiceGame = new System.Windows.Forms.RadioButton();
+            this.CoinGame = new System.Windows.Forms.RadioButton();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.StartBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -56,16 +56,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Game Type";
             // 
-            // CoinGame
+            // CardGame
             // 
-            this.CoinGame.AutoSize = true;
-            this.CoinGame.Location = new System.Drawing.Point(63, 44);
-            this.CoinGame.Name = "CoinGame";
-            this.CoinGame.Size = new System.Drawing.Size(77, 17);
-            this.CoinGame.TabIndex = 0;
-            this.CoinGame.TabStop = true;
-            this.CoinGame.Text = "Coin Game";
-            this.CoinGame.UseVisualStyleBackColor = true;
+            this.CardGame.AutoSize = true;
+            this.CardGame.Location = new System.Drawing.Point(63, 112);
+            this.CardGame.Name = "CardGame";
+            this.CardGame.Size = new System.Drawing.Size(78, 17);
+            this.CardGame.TabIndex = 2;
+            this.CardGame.TabStop = true;
+            this.CardGame.Text = "Card Game";
+            this.CardGame.UseVisualStyleBackColor = true;
+            this.CardGame.CheckedChanged += new System.EventHandler(this.CoinGame_CheckedChanged);
             // 
             // DiceGame
             // 
@@ -77,17 +78,19 @@
             this.DiceGame.TabStop = true;
             this.DiceGame.Text = "Dice Game";
             this.DiceGame.UseVisualStyleBackColor = true;
+            this.DiceGame.CheckedChanged += new System.EventHandler(this.CoinGame_CheckedChanged);
             // 
-            // CardGame
+            // CoinGame
             // 
-            this.CardGame.AutoSize = true;
-            this.CardGame.Location = new System.Drawing.Point(63, 112);
-            this.CardGame.Name = "CardGame";
-            this.CardGame.Size = new System.Drawing.Size(78, 17);
-            this.CardGame.TabIndex = 2;
-            this.CardGame.TabStop = true;
-            this.CardGame.Text = "Card Game";
-            this.CardGame.UseVisualStyleBackColor = true;
+            this.CoinGame.AutoSize = true;
+            this.CoinGame.Location = new System.Drawing.Point(63, 44);
+            this.CoinGame.Name = "CoinGame";
+            this.CoinGame.Size = new System.Drawing.Size(77, 17);
+            this.CoinGame.TabIndex = 0;
+            this.CoinGame.TabStop = true;
+            this.CoinGame.Text = "Coin Game";
+            this.CoinGame.UseVisualStyleBackColor = true;
+            this.CoinGame.CheckedChanged += new System.EventHandler(this.CoinGame_CheckedChanged);
             // 
             // ExitBtn
             // 
@@ -97,15 +100,18 @@
             this.ExitBtn.TabIndex = 2;
             this.ExitBtn.Text = "Exit";
             this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // StartBtn
             // 
+            this.StartBtn.Enabled = false;
             this.StartBtn.Location = new System.Drawing.Point(111, 310);
             this.StartBtn.Name = "StartBtn";
             this.StartBtn.Size = new System.Drawing.Size(122, 23);
             this.StartBtn.TabIndex = 3;
             this.StartBtn.Text = "Start";
             this.StartBtn.UseVisualStyleBackColor = true;
+            this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
             // 
             // Form1
             // 
@@ -117,7 +123,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Monaco Arena";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
