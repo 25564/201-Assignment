@@ -35,7 +35,7 @@ namespace GroupProject {
             if (result == DialogResult.Yes) {
                 Form InitialForm = new Form1();
                 InitialForm.Show();
-                this.Hide();
+                this.Close();
             }
         }
     }

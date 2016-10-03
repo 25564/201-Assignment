@@ -49,7 +49,7 @@ namespace GroupProject {
             } else if (SelectedGame == 3) {
                 Form GameForm = new Which_Card_Game();
                 GameForm.Show();
-                this.Hide();
+                this.Close();
             }
         }
 

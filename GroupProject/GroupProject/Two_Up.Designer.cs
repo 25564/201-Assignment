@@ -61,6 +61,7 @@
             this.ThrowCoinsBtn.TabIndex = 2;
             this.ThrowCoinsBtn.Text = "Throw Coins";
             this.ThrowCoinsBtn.UseVisualStyleBackColor = true;
+            this.ThrowCoinsBtn.Click += new System.EventHandler(this.ThrowCoinsBtn_Click);
             // 
             // PlayAgainBtn
             // 
@@ -71,6 +72,7 @@
             this.PlayAgainBtn.Text = "Play Again";
             this.PlayAgainBtn.UseVisualStyleBackColor = true;
             this.PlayAgainBtn.Visible = false;
+            this.PlayAgainBtn.Click += new System.EventHandler(this.PlayAgainBtn_Click);
             // 
             // CancelGameBtn
             // 
@@ -80,6 +82,7 @@
             this.CancelGameBtn.TabIndex = 4;
             this.CancelGameBtn.Text = "Cancel Game";
             this.CancelGameBtn.UseVisualStyleBackColor = true;
+            this.CancelGameBtn.Click += new System.EventHandler(this.CancelGameBtn_Click);
             // 
             // label1
             // 
