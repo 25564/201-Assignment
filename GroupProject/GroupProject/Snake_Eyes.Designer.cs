@@ -27,7 +27,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.RollCount = new System.Windows.Forms.Label();
             this.RollDice = new System.Windows.Forms.Button();
-            this.PointScored = new System.Windows.Forms.Label();
+            this.RollOutcome = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.PlayerScore = new System.Windows.Forms.Label();
             this.HouseScore = new System.Windows.Forms.Label();
@@ -74,16 +74,18 @@
             this.RollDice.TabIndex = 3;
             this.RollDice.Text = "Roll Dice";
             this.RollDice.UseVisualStyleBackColor = true;
+            this.RollDice.Click += new System.EventHandler(this.RollDice_Click);
             // 
-            // PointScored
+            // RollOutcome
             // 
-            this.PointScored.AutoSize = true;
-            this.PointScored.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PointScored.Location = new System.Drawing.Point(209, 212);
-            this.PointScored.Name = "PointScored";
-            this.PointScored.Size = new System.Drawing.Size(110, 24);
-            this.PointScored.TabIndex = 4;
-            this.PointScored.Text = "Dummyyyy";
+            this.RollOutcome.AutoSize = true;
+            this.RollOutcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RollOutcome.Location = new System.Drawing.Point(209, 212);
+            this.RollOutcome.Name = "RollOutcome";
+            this.RollOutcome.Size = new System.Drawing.Size(110, 24);
+            this.RollOutcome.TabIndex = 4;
+            this.RollOutcome.Text = "Dummyyyy";
+            this.RollOutcome.Visible = false;
             // 
             // label1
             // 
@@ -114,7 +116,6 @@
             this.HouseScore.Size = new System.Drawing.Size(13, 13);
             this.HouseScore.TabIndex = 8;
             this.HouseScore.Text = "0";
-            this.HouseScore.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -125,7 +126,6 @@
             this.label3.Size = new System.Drawing.Size(123, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "House Score: ";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // ContinueGame
             // 
@@ -135,6 +135,8 @@
             this.ContinueGame.TabIndex = 9;
             this.ContinueGame.Text = "Continue Playing";
             this.ContinueGame.UseVisualStyleBackColor = true;
+            this.ContinueGame.Visible = false;
+            this.ContinueGame.Click += new System.EventHandler(this.ContinueGame_Click);
             // 
             // S
             // 
@@ -144,6 +146,7 @@
             this.S.TabIndex = 10;
             this.S.Text = "Cancel Game";
             this.S.UseVisualStyleBackColor = true;
+            this.S.Click += new System.EventHandler(this.S_Click);
             // 
             // Snake_Eyes
             // 
@@ -156,7 +159,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.PlayerScore);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.PointScored);
+            this.Controls.Add(this.RollOutcome);
             this.Controls.Add(this.RollDice);
             this.Controls.Add(this.RollCount);
             this.Controls.Add(this.pictureBox2);
@@ -177,7 +180,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label RollCount;
         private System.Windows.Forms.Button RollDice;
-        private System.Windows.Forms.Label PointScored;
+        private System.Windows.Forms.Label RollOutcome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label PlayerScore;
         private System.Windows.Forms.Label HouseScore;

@@ -37,20 +37,21 @@ namespace GroupProject {
                 // Shows new form
                 Form GameForm = new Two_Up();
                 GameForm.Show();
-                // Use close not hide to stop mem leaks and multiple spawns of the same form
-                this.Close();
+                // Generally use .Close(), not hide to stop mem leaks and multiple spawns of the same form
+                // Only use hide for intial form because otherwise program fails
+                this.Hide();
 
             // 2 = Dice Game Selection
             } else if (SelectedGame == 2) {
                 Form GameForm = new Which_Dice_Game();
                 GameForm.Show();
-                this.Close();
+                this.Hide();
 
             // 3 = Card Game Selection
             } else if (SelectedGame == 3) {
                 Form GameForm = new Which_Card_Game();
                 GameForm.Show();
-                this.Close();
+                this.Hide();
             }
         }
 
