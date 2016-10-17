@@ -12,6 +12,7 @@ namespace Games_Logib_Library {
         static public int houseTotal;
         static public int possiblePoints;
         static public int numRolls;
+        static public bool PointsSet;
         static public Die[] dice = new Die[2];
 
         public static void SetUpGame() {
@@ -42,10 +43,14 @@ namespace Games_Logib_Library {
             } else if (rollTotal == 3 || rollTotal == 12) {
                 RollAgain = false;
             } else if (rollTotal == possiblePoints) {
-                playerTotal += possiblePoints;
+                PointsSet = false;
                 RollAgain = false;
-            } else {
+            } else if (possiblePoints == 0) {
                 GetPossiblePoints();
+                PointsSet = true;
+                RollAgain = true;
+            } else {
+                
                 RollAgain = true;
             }
 
@@ -92,15 +97,17 @@ namespace Games_Logib_Library {
             string outcome;
 
             if (rollTotal == 2) {
-                outcome = "Player wins!";
+                outcome = String.Format("Player wins {0} points!", 2);
                 playerTotal += 2;
             } else if (rollTotal == 7 || rollTotal == 11) {
-                outcome = "Player wins!";
+                outcome = String.Format("Player wins {0} point!", 1);
                 playerTotal += 1;
             } else if (rollTotal == 3 || rollTotal == 12) {
-                outcome = "Player loses";
+                outcome = String.Format("House wins {0} points!", 2);
                 houseTotal += 2;
-            
+            } else if (rollTotal == possiblePoints && PointsSet == false) {
+                outcome = String.Format("Player wins {0} points!", possiblePoints);
+                playerTotal += possiblePoints;
             } else {
                 outcome = "No result, roll " + possiblePoints + " again to win!";
             }
