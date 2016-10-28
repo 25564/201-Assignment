@@ -146,6 +146,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Low Level Objects Library\Low Level Objects Library.csproj">
+      <Project>{58c10ebf-139e-4f88-be71-a3807265f4bf}</Project>
+      <Name>Low Level Objects Library</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
