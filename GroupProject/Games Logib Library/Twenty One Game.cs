@@ -34,8 +34,12 @@ namespace Games_Logib_Library {
                     Score += (int)(card.GetFaceValue() + 2);
                 } else {
                     if (card.GetFaceValue() == FaceValue.Ace) {
-                        if (AceCount < GetNumOfUserAcesWithValueOne()) { // If this ace counts as a one or eleven
-                            Score += 1;
+                        if (who == 0) {
+                            if (AceCount < GetNumOfUserAcesWithValueOne()) { // If this ace counts as a one or eleven
+                                Score += 1;
+                            } else {
+                                Score += 11;
+                            }
                         } else {
                             Score += 11;
                         }

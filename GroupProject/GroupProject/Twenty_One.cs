@@ -41,6 +41,27 @@ namespace GroupProject {
             this.Visible = false;
         }
 
+        private void checkPlayerAces() {
+            int ignoreCount = Twenty_One_Game.GetNumOfUserAcesWithValueOne();
+            foreach (Card card in Twenty_One_Game.GetHand(0)) {
+                if ((int)card.GetFaceValue() == 12) { // is an Ace
+                    if (ignoreCount <= 0) {
+                        // Pop up message box
+                        DialogResult result = MessageBox.Show("Count Aces as 1?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        // If user wants to quit
+                        if (result == DialogResult.Yes) {
+                            Twenty_One_Game.IncrementNumOfUserAcesWithValueOne();
+                        }
+                    } else {
+                        ignoreCount -= 1;
+                    }
+                } 
+            }
+
+            AceValueOneLabel.Text = Twenty_One_Game.GetNumOfUserAcesWithValueOne().ToString();
+        }
+
         private void dealButton_Click(object sender, EventArgs e) {
             Twenty_One_Game.ResetTotals();
             Twenty_One_Game.DealOneCardTo(0);
@@ -49,10 +70,18 @@ namespace GroupProject {
             Twenty_One_Game.DealOneCardTo(1);
 
             checkPlayerAction();
+
             DisplayGuiHand(Twenty_One_Game.GetHand(0), playerTableLayoutPanel);
             DisplayGuiHand(Twenty_One_Game.GetHand(1), dealerTableLayoutPanel);
 
+            checkPlayerAces();
+            checkPlayerAction();
+
             DealerPointsLabel.Text = Twenty_One_Game.GetTotalPoints(1).ToString();
+
+            if (Twenty_One_Game.GetTotalPoints(1) >= 21 || Twenty_One_Game.GetTotalPoints(0) >= 21) {
+                gameOver();
+            }
 
             DealerBustedLabel.Visible = false;
             PlayerBustedLabel.Visible = false;
@@ -135,8 +164,9 @@ namespace GroupProject {
 
         private void hitButton_Click(object sender, EventArgs e) {
             Twenty_One_Game.DealOneCardTo(0);
-            checkPlayerAction();
             DisplayGuiHand(Twenty_One_Game.GetHand(0), playerTableLayoutPanel);
+            checkPlayerAces();
+            checkPlayerAction();
         }
     }
 }
