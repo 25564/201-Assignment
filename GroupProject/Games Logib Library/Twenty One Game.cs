@@ -22,6 +22,7 @@ namespace Games_Logib_Library {
 
         public static void DealOneCardTo(int who) {
             hands[who].Add(cardPile.DealOneCard());
+            totalPoints[who] = CalculateHandTotal(who);
         }
 
         public static int CalculateHandTotal(int who) {
@@ -50,7 +51,10 @@ namespace Games_Logib_Library {
         }
 
         public static void PlayForDealer() {
-
+            while (GetTotalPoints(1) < 17) {
+                Console.WriteLine(GetTotalPoints(1));
+                DealOneCardTo(1);
+            }
         }
 
         public static Hand GetHand(int who) {

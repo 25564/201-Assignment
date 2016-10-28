@@ -51,6 +51,11 @@ namespace GroupProject {
             checkPlayerAction();
             DisplayGuiHand(Twenty_One_Game.GetHand(0), playerTableLayoutPanel);
             DisplayGuiHand(Twenty_One_Game.GetHand(1), dealerTableLayoutPanel);
+
+            DealerPointsLabel.Text = Twenty_One_Game.GetTotalPoints(1).ToString();
+
+            DealerBustedLabel.Visible = false;
+            PlayerBustedLabel.Visible = false;
             dealButton.Enabled = false;
             standButton.Enabled = true;
             hitButton.Enabled = true;
@@ -62,16 +67,37 @@ namespace GroupProject {
             PlayerPointsLabel.Text = Score.ToString();
 
             if (Score >= 21) { // Player Caused Ending
-                if (Score == 21) { // Player Won
-                    Twenty_One_Game.IncrementNumOfGamesWon(0);
-                } else { // Player Lost
-                    PlayerBustedLabel.Visible = true;
-                }
+                PlayerBustedLabel.Visible = true;
                 gameOver();
             }
         }
 
+        private void calculateWinner() {
+            int playerScore = Twenty_One_Game.GetTotalPoints(0);
+            int dealerScore = Twenty_One_Game.GetTotalPoints(1);
+
+            if (dealerScore != playerScore) { // Not a tie
+                if (playerScore > 21) { // Player Busted
+                    Twenty_One_Game.IncrementNumOfGamesWon(1);
+                } else if (dealerScore > 21) { // Dealer Busted
+                    Twenty_One_Game.IncrementNumOfGamesWon(0);
+                } else {
+                    if (playerScore > dealerScore) { // Player won
+                        Twenty_One_Game.IncrementNumOfGamesWon(0);
+                    } else {
+                        Twenty_One_Game.IncrementNumOfGamesWon(1);
+                    }
+                }
+            }
+
+            DealerGamesWonLabel.Text = Twenty_One_Game.GetNumOfGamesWon(1).ToString();
+            PlayerGamesWonLabel.Text = Twenty_One_Game.GetNumOfGamesWon(0).ToString();
+        }
+
         private void gameOver() {
+
+            calculateWinner();
+
             hitButton.Enabled = false;
             standButton.Enabled = false;
             dealButton.Enabled = true;
@@ -89,7 +115,15 @@ namespace GroupProject {
         }
 
         private void standButton_Click(object sender, EventArgs e) {
+            Twenty_One_Game.PlayForDealer();
+            DealerPointsLabel.Text = Twenty_One_Game.GetTotalPoints(1).ToString();
+            DisplayGuiHand(Twenty_One_Game.GetHand(1), dealerTableLayoutPanel);
 
+            if (Twenty_One_Game.GetTotalPoints(1) > 21) {
+                DealerBustedLabel.Visible = true;
+            }
+
+            gameOver();
         }
 
         private void cancelButton_Click(object sender, EventArgs e) {
