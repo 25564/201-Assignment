@@ -6,7 +6,7 @@ using System.Linq;
 namespace Low_Level_Objects_Library {
     public class Hand : IEnumerable {
         // List of cards
-        private List<Card> hand;
+        private List<Card> hand = new List<Card>();
 
         // Empty Constructur
         public Hand() {

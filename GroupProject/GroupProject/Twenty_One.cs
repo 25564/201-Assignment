@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Low_Level_Objects_Library;
+using Games_Logib_Library;
 
 namespace GroupProject {
     public partial class Twenty_One : Form {
         public Twenty_One() {
             InitializeComponent();
+            Twenty_One_Game.SetUpGame();
         }
 
         private void DisplayGuiHand(Hand hand, TableLayoutPanel tableLayoutPanel) {
@@ -40,7 +42,39 @@ namespace GroupProject {
         }
 
         private void dealButton_Click(object sender, EventArgs e) {
+            Twenty_One_Game.ResetTotals();
+            Twenty_One_Game.DealOneCardTo(0);
+            Twenty_One_Game.DealOneCardTo(0);
+            Twenty_One_Game.DealOneCardTo(1);
+            Twenty_One_Game.DealOneCardTo(1);
 
+            checkPlayerAction();
+            DisplayGuiHand(Twenty_One_Game.GetHand(0), playerTableLayoutPanel);
+            DisplayGuiHand(Twenty_One_Game.GetHand(1), dealerTableLayoutPanel);
+            dealButton.Enabled = false;
+            standButton.Enabled = true;
+            hitButton.Enabled = true;
+        }
+
+        private void checkPlayerAction() {
+            int Score = Twenty_One_Game.CalculateHandTotal(0);
+
+            PlayerPointsLabel.Text = Score.ToString();
+
+            if (Score >= 21) { // Player Caused Ending
+                if (Score == 21) { // Player Won
+                    Twenty_One_Game.IncrementNumOfGamesWon(0);
+                } else { // Player Lost
+                    PlayerBustedLabel.Visible = true;
+                }
+                gameOver();
+            }
+        }
+
+        private void gameOver() {
+            hitButton.Enabled = false;
+            standButton.Enabled = false;
+            dealButton.Enabled = true;
         }
 
         private void testButton_Click(object sender, EventArgs e) {
@@ -59,12 +93,16 @@ namespace GroupProject {
         }
 
         private void cancelButton_Click(object sender, EventArgs e) {
-            this.Visible = false;
+            Form InitialForm = new Form1();
+            InitialForm.Show();
+            this.Close();
         }
 
 
         private void hitButton_Click(object sender, EventArgs e) {
-
+            Twenty_One_Game.DealOneCardTo(0);
+            checkPlayerAction();
+            DisplayGuiHand(Twenty_One_Game.GetHand(0), playerTableLayoutPanel);
         }
     }
 }
