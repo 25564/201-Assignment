@@ -96,7 +96,9 @@ namespace GroupProject {
             PlayerPointsLabel.Text = Score.ToString();
 
             if (Score >= 21) { // Player Caused Ending
-                PlayerBustedLabel.Visible = true;
+                if (Score > 21) {
+                    PlayerBustedLabel.Visible = true;
+                }
                 gameOver();
             }
         }
