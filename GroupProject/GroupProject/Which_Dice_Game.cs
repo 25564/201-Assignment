@@ -14,6 +14,8 @@ namespace GroupProject {
             InitializeComponent();
         }
 
+        // <DiceGameSelection>
+        // Reads the selected dropdown option and opens the corresponding form
         private void DiceGameSelection_SelectedIndexChanged(object sender, EventArgs e) {
             int SelectedGame = DiceGameSelection.SelectedIndex;
             if (SelectedGame == 0) {
@@ -26,7 +28,10 @@ namespace GroupProject {
                 this.Hide();
             }
         }
+        // </DiceGameSelection>
 
+        // <ExitButtonClick>
+        // Takes user back to the main menu, but opens a dialogue warning them first
         private void ToMenu_Click(object sender, EventArgs e) {
             DialogResult result = MessageBox.Show("Are you sure you want to exit?", // Question text
                                                    "WARNING", // Box title
@@ -38,5 +43,6 @@ namespace GroupProject {
                 this.Close();
             }
         }
+        // <ExitButtonClick>
     }
 }
