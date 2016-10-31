@@ -68,26 +68,23 @@ namespace GroupProject {
             Twenty_One_Game.DealOneCardTo(0);
             Twenty_One_Game.DealOneCardTo(1);
             Twenty_One_Game.DealOneCardTo(1);
-
-            checkPlayerAction();
+            
+            PlayerPointsLabel.Text = Twenty_One_Game.CalculateHandTotal(0).ToString();
 
             DisplayGuiHand(Twenty_One_Game.GetHand(0), playerTableLayoutPanel);
             DisplayGuiHand(Twenty_One_Game.GetHand(1), dealerTableLayoutPanel);
 
             checkPlayerAces();
-            checkPlayerAction();
 
             DealerPointsLabel.Text = Twenty_One_Game.GetTotalPoints(1).ToString();
-
-            if (Twenty_One_Game.GetTotalPoints(1) >= 21 || Twenty_One_Game.GetTotalPoints(0) >= 21) {
-                gameOver();
-            }
 
             DealerBustedLabel.Visible = false;
             PlayerBustedLabel.Visible = false;
             dealButton.Enabled = false;
             standButton.Enabled = true;
             hitButton.Enabled = true;
+
+            checkPlayerAction();
         }
 
         private void checkPlayerAction() {
@@ -126,6 +123,15 @@ namespace GroupProject {
         }
 
         private void gameOver() {
+            if (PlayerBustedLabel.Visible == false) { // Dealer only needs to play if it hasn't already won
+                Twenty_One_Game.PlayForDealer();
+                DisplayGuiHand(Twenty_One_Game.GetHand(0), playerTableLayoutPanel);
+                DisplayGuiHand(Twenty_One_Game.GetHand(1), dealerTableLayoutPanel);
+                DealerPointsLabel.Text = Twenty_One_Game.GetTotalPoints(1).ToString();
+                if (Twenty_One_Game.GetTotalPoints(1) > 21) {
+                    DealerBustedLabel.Visible = true;
+                }
+            }
 
             calculateWinner();
 
