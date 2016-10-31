@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.ThrowCoinsBtn = new System.Windows.Forms.Button();
@@ -33,31 +34,35 @@
             this.PlayerScore = new System.Windows.Forms.Label();
             this.ComputerScore = new System.Windows.Forms.Label();
             this.ResultLbl = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(36, 64);
+            this.pictureBox1.Location = new System.Drawing.Point(54, 98);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox1.Size = new System.Drawing.Size(225, 231);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(329, 64);
+            this.pictureBox2.Location = new System.Drawing.Point(494, 98);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox2.Size = new System.Drawing.Size(225, 231);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
             // ThrowCoinsBtn
             // 
-            this.ThrowCoinsBtn.Location = new System.Drawing.Point(34, 296);
+            this.ThrowCoinsBtn.Location = new System.Drawing.Point(51, 455);
+            this.ThrowCoinsBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ThrowCoinsBtn.Name = "ThrowCoinsBtn";
-            this.ThrowCoinsBtn.Size = new System.Drawing.Size(118, 23);
+            this.ThrowCoinsBtn.Size = new System.Drawing.Size(177, 35);
             this.ThrowCoinsBtn.TabIndex = 2;
             this.ThrowCoinsBtn.Text = "Throw Coins";
             this.ThrowCoinsBtn.UseVisualStyleBackColor = true;
@@ -65,9 +70,10 @@
             // 
             // PlayAgainBtn
             // 
-            this.PlayAgainBtn.Location = new System.Drawing.Point(215, 296);
+            this.PlayAgainBtn.Location = new System.Drawing.Point(322, 455);
+            this.PlayAgainBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.PlayAgainBtn.Name = "PlayAgainBtn";
-            this.PlayAgainBtn.Size = new System.Drawing.Size(118, 23);
+            this.PlayAgainBtn.Size = new System.Drawing.Size(177, 35);
             this.PlayAgainBtn.TabIndex = 3;
             this.PlayAgainBtn.Text = "Play Again";
             this.PlayAgainBtn.UseVisualStyleBackColor = true;
@@ -76,9 +82,10 @@
             // 
             // CancelGameBtn
             // 
-            this.CancelGameBtn.Location = new System.Drawing.Point(399, 296);
+            this.CancelGameBtn.Location = new System.Drawing.Point(598, 455);
+            this.CancelGameBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CancelGameBtn.Name = "CancelGameBtn";
-            this.CancelGameBtn.Size = new System.Drawing.Size(118, 23);
+            this.CancelGameBtn.Size = new System.Drawing.Size(177, 35);
             this.CancelGameBtn.TabIndex = 4;
             this.CancelGameBtn.Text = "Cancel Game";
             this.CancelGameBtn.UseVisualStyleBackColor = true;
@@ -87,18 +94,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 241);
+            this.label1.Location = new System.Drawing.Point(54, 371);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Player\'s Score:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(326, 241);
+            this.label2.Location = new System.Drawing.Point(489, 371);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.Size = new System.Drawing.Size(140, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "Computer\'s Score:";
             // 
@@ -106,9 +115,10 @@
             // 
             this.PlayerScore.AutoSize = true;
             this.PlayerScore.BackColor = System.Drawing.Color.White;
-            this.PlayerScore.Location = new System.Drawing.Point(119, 241);
+            this.PlayerScore.Location = new System.Drawing.Point(178, 371);
+            this.PlayerScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PlayerScore.Name = "PlayerScore";
-            this.PlayerScore.Size = new System.Drawing.Size(13, 13);
+            this.PlayerScore.Size = new System.Drawing.Size(18, 20);
             this.PlayerScore.TabIndex = 7;
             this.PlayerScore.Text = "0";
             // 
@@ -116,9 +126,10 @@
             // 
             this.ComputerScore.AutoSize = true;
             this.ComputerScore.BackColor = System.Drawing.Color.White;
-            this.ComputerScore.Location = new System.Drawing.Point(425, 241);
+            this.ComputerScore.Location = new System.Drawing.Point(638, 371);
+            this.ComputerScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ComputerScore.Name = "ComputerScore";
-            this.ComputerScore.Size = new System.Drawing.Size(13, 13);
+            this.ComputerScore.Size = new System.Drawing.Size(18, 20);
             this.ComputerScore.TabIndex = 8;
             this.ComputerScore.Text = "0";
             // 
@@ -126,18 +137,23 @@
             // 
             this.ResultLbl.AutoSize = true;
             this.ResultLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResultLbl.Location = new System.Drawing.Point(547, 117);
+            this.ResultLbl.Location = new System.Drawing.Point(820, 180);
+            this.ResultLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ResultLbl.Name = "ResultLbl";
-            this.ResultLbl.Size = new System.Drawing.Size(60, 24);
+            this.ResultLbl.Size = new System.Drawing.Size(93, 33);
             this.ResultLbl.TabIndex = 9;
             this.ResultLbl.Text = "label3";
             this.ResultLbl.Visible = false;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Two_Up
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(667, 373);
+            this.ClientSize = new System.Drawing.Size(1000, 574);
             this.Controls.Add(this.ResultLbl);
             this.Controls.Add(this.ComputerScore);
             this.Controls.Add(this.PlayerScore);
@@ -148,6 +164,7 @@
             this.Controls.Add(this.ThrowCoinsBtn);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Two_Up";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Two_Up";
@@ -170,5 +187,6 @@
         private System.Windows.Forms.Label PlayerScore;
         private System.Windows.Forms.Label ComputerScore;
         private System.Windows.Forms.Label ResultLbl;
+        private System.Windows.Forms.Timer timer1;
     }
 }
