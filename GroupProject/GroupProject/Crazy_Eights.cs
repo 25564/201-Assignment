@@ -108,7 +108,9 @@ namespace GroupProject {
         }
 
         private void cancelButton_Click(object sender, EventArgs e) {
-
+            Form InitialForm = new Form1();
+            InitialForm.Show();
+            this.Close();
         }
 
         private void isGameOver() {
