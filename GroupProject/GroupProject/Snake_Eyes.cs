@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Games_Logib_Library;
+using Games_Logic_Library;
 
 namespace GroupProject {
     public partial class Snake_Eyes : Form {

@@ -13,5 +13,25 @@ namespace GroupProject {
         public Crazy_Eights() {
             InitializeComponent();
         }
+
+        private void drawPilePictureBox_Click(object sender, EventArgs e) {
+
+        }
+
+        private void statusLabel_Enter(object sender, EventArgs e) {
+
+        }
+
+        private void dealButton_Click(object sender, EventArgs e) {
+
+        }
+
+        private void sortCardButton_Click(object sender, EventArgs e) {
+
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e) {
+
+        }
     }
 }

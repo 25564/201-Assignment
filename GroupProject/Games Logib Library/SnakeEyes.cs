@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Low_Level_Objects_Library;
 
-namespace Games_Logib_Library {
+namespace Games_Logic_Library {
     public class SnakeEyes {
         static public int rollTotal;
         static public int playerTotal;
