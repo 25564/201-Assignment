@@ -16,6 +16,9 @@ namespace GroupProject {
     /// Based off the spec in Part C2
     /// </summary>
     public partial class Twenty_One : Form {
+
+        const int BLACK_JACK_SCORE = 21;
+
         public Twenty_One() {
             InitializeComponent();
             Twenty_One_Game.SetUpGame();
@@ -41,15 +44,13 @@ namespace GroupProject {
         }
 
         private void Twenty_One_FormClosing(object sender, FormClosingEventArgs e) {
-            
-            //e.Cancel = true;
-            //this.Visible = false;
+  
         }
 
         private void checkPlayerAces() {
             int ignoreCount = Twenty_One_Game.GetNumOfUserAcesWithValueOne();
             foreach (Card card in Twenty_One_Game.GetHand(0)) {
-                if ((int)card.GetFaceValue() == 12) { // is an Ace
+                if (card.GetFaceValue() == FaceValue.Ace) { // is an Ace
                     if (ignoreCount <= 0) {
                         // Pop up message box
                         DialogResult result = MessageBox.Show("Count Aces as 1?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -97,22 +98,22 @@ namespace GroupProject {
 
             PlayerPointsLabel.Text = Score.ToString();
 
-            if (Score >= 21) { // Player Caused Ending
-                if (Score > 21) {
+            if (Score >= BLACK_JACK_SCORE) { // Player Caused Ending
+                if (Score > BLACK_JACK_SCORE) {
                     PlayerBustedLabel.Visible = true;
                 }
                 gameOver();
             }
-        }
+        } // End checkPlayerAction
 
         private void calculateWinner() {
             int playerScore = Twenty_One_Game.GetTotalPoints(0);
             int dealerScore = Twenty_One_Game.GetTotalPoints(1);
 
             if (dealerScore != playerScore) { // Not a tie
-                if (playerScore > 21) { // Player Busted
+                if (playerScore > BLACK_JACK_SCORE) { // Player Busted
                     Twenty_One_Game.IncrementNumOfGamesWon(1);
-                } else if (dealerScore > 21) { // Dealer Busted
+                } else if (dealerScore > BLACK_JACK_SCORE { // Dealer Busted
                     Twenty_One_Game.IncrementNumOfGamesWon(0);
                 } else {
                     if (playerScore > dealerScore) { // Player won
@@ -125,7 +126,7 @@ namespace GroupProject {
 
             DealerGamesWonLabel.Text = Twenty_One_Game.GetNumOfGamesWon(1).ToString();
             PlayerGamesWonLabel.Text = Twenty_One_Game.GetNumOfGamesWon(0).ToString();
-        }
+        } // end calculateWinner()
 
         private void gameOver() {
             if (PlayerBustedLabel.Visible == false) { // Dealer only needs to play if it hasn't already won
@@ -143,7 +144,7 @@ namespace GroupProject {
             hitButton.Enabled = false;
             standButton.Enabled = false;
             dealButton.Enabled = true;
-        }
+        } // End gameOver()
 
         private void testButton_Click(object sender, EventArgs e) {
             const int testNumOfCardsForDealer = 2;
@@ -161,7 +162,7 @@ namespace GroupProject {
             DealerPointsLabel.Text = Twenty_One_Game.GetTotalPoints(1).ToString();
             DisplayGuiHand(Twenty_One_Game.GetHand(1), dealerTableLayoutPanel);
 
-            if (Twenty_One_Game.GetTotalPoints(1) > 21) {
+            if (Twenty_One_Game.GetTotalPoints(1) > BLACK_JACK_SCORE) {
                 DealerBustedLabel.Visible = true;
             }
 
