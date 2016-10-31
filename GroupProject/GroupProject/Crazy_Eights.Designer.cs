@@ -25,16 +25,16 @@
         private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.ComputerCardPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.PlayerCardPanel = new System.Windows.Forms.TableLayoutPanel();
             this.drawPilePictureBox = new System.Windows.Forms.PictureBox();
-            this.pileHandPictureBox = new System.Windows.Forms.PictureBox();
+            this.placedCardsPictureBox = new System.Windows.Forms.PictureBox();
             this.statusLabel = new System.Windows.Forms.Label();
             this.dealButton = new System.Windows.Forms.Button();
             this.sortCardButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.drawPilePictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pileHandPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.placedCardsPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -43,7 +43,7 @@
             this.label1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(244, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 29);
+            this.label1.Size = new System.Drawing.Size(168, 44);
             this.label1.TabIndex = 0;
             this.label1.Text = "Computer";
             // 
@@ -53,57 +53,57 @@
             this.label2.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(244, 359);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 29);
+            this.label2.Size = new System.Drawing.Size(110, 44);
             this.label2.TabIndex = 1;
             this.label2.Text = "Player";
             // 
-            // tableLayoutPanel1
+            // ComputerCardPanel
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 13;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 50);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(570, 95);
-            this.tableLayoutPanel1.TabIndex = 2;
+            this.ComputerCardPanel.AutoSize = true;
+            this.ComputerCardPanel.ColumnCount = 13;
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.ComputerCardPanel.Location = new System.Drawing.Point(17, 50);
+            this.ComputerCardPanel.Name = "ComputerCardPanel";
+            this.ComputerCardPanel.RowCount = 1;
+            this.ComputerCardPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ComputerCardPanel.Size = new System.Drawing.Size(570, 95);
+            this.ComputerCardPanel.TabIndex = 2;
             // 
-            // tableLayoutPanel2
+            // PlayerCardPanel
             // 
-            this.tableLayoutPanel2.AutoSize = true;
-            this.tableLayoutPanel2.ColumnCount = 13;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(17, 252);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(570, 95);
-            this.tableLayoutPanel2.TabIndex = 3;
+            this.PlayerCardPanel.AutoSize = true;
+            this.PlayerCardPanel.ColumnCount = 13;
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.PlayerCardPanel.Location = new System.Drawing.Point(17, 252);
+            this.PlayerCardPanel.Name = "PlayerCardPanel";
+            this.PlayerCardPanel.RowCount = 1;
+            this.PlayerCardPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.PlayerCardPanel.Size = new System.Drawing.Size(570, 95);
+            this.PlayerCardPanel.TabIndex = 3;
             // 
             // drawPilePictureBox
             // 
@@ -114,13 +114,13 @@
             this.drawPilePictureBox.TabStop = false;
             this.drawPilePictureBox.Click += new System.EventHandler(this.drawPilePictureBox_Click);
             // 
-            // pileHandPictureBox
+            // placedCardsPictureBox
             // 
-            this.pileHandPictureBox.Location = new System.Drawing.Point(286, 151);
-            this.pileHandPictureBox.Name = "pileHandPictureBox";
-            this.pileHandPictureBox.Size = new System.Drawing.Size(70, 95);
-            this.pileHandPictureBox.TabIndex = 5;
-            this.pileHandPictureBox.TabStop = false;
+            this.placedCardsPictureBox.Location = new System.Drawing.Point(286, 151);
+            this.placedCardsPictureBox.Name = "placedCardsPictureBox";
+            this.placedCardsPictureBox.Size = new System.Drawing.Size(70, 95);
+            this.placedCardsPictureBox.TabIndex = 5;
+            this.placedCardsPictureBox.TabStop = false;
             // 
             // statusLabel
             // 
@@ -129,7 +129,6 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(180, 40);
             this.statusLabel.TabIndex = 6;
-            this.statusLabel.Text = "";
             this.statusLabel.Enter += new System.EventHandler(this.statusLabel_Enter);
             // 
             // dealButton
@@ -142,16 +141,6 @@
             this.dealButton.UseVisualStyleBackColor = true;
             this.dealButton.Click += new System.EventHandler(this.dealButton_Click);
             // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(454, 397);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 9;
-            this.cancelButton.Text = "Cancel Game";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
-            // 
             // sortCardButton
             // 
             this.sortCardButton.Location = new System.Drawing.Point(232, 414);
@@ -162,9 +151,19 @@
             this.sortCardButton.UseVisualStyleBackColor = true;
             this.sortCardButton.Click += new System.EventHandler(this.sortCardButton_Click);
             // 
-            // Crazy_Eight
+            // cancelButton
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.cancelButton.Location = new System.Drawing.Point(454, 397);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 9;
+            this.cancelButton.Text = "Cancel Game";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // Crazy_Eights
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(604, 461);
@@ -172,19 +171,19 @@
             this.Controls.Add(this.sortCardButton);
             this.Controls.Add(this.dealButton);
             this.Controls.Add(this.statusLabel);
-            this.Controls.Add(this.pileHandPictureBox);
+            this.Controls.Add(this.placedCardsPictureBox);
             this.Controls.Add(this.drawPilePictureBox);
-            this.Controls.Add(this.tableLayoutPanel2);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.PlayerCardPanel);
+            this.Controls.Add(this.ComputerCardPanel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Crazy_Eight";
+            this.Name = "Crazy_Eights";
             this.Text = "Crazy_Eight";
             ((System.ComponentModel.ISupportInitialize)(this.drawPilePictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pileHandPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.placedCardsPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,10 +193,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel PlayerCardPanel;
+        private System.Windows.Forms.TableLayoutPanel ComputerCardPanel;
         private System.Windows.Forms.PictureBox drawPilePictureBox;
-        private System.Windows.Forms.PictureBox pileHandPictureBox;
+        private System.Windows.Forms.PictureBox placedCardsPictureBox;
         private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.Button dealButton;
         private System.Windows.Forms.Button sortCardButton;

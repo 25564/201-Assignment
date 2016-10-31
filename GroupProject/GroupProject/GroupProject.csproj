@@ -76,6 +76,12 @@
     <Compile Include="Snake_Eyes.Designer.cs">
       <DependentUpon>Snake_Eyes.cs</DependentUpon>
     </Compile>
+    <Compile Include="SuitSelectorCrazyEights.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuitSelectorCrazyEights.Designer.cs">
+      <DependentUpon>SuitSelectorCrazyEights.cs</DependentUpon>
+    </Compile>
     <Compile Include="Twenty_One.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Snake_Eyes.resx">
       <DependentUpon>Snake_Eyes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuitSelectorCrazyEights.resx">
+      <DependentUpon>SuitSelectorCrazyEights.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Twenty_One.resx">
       <DependentUpon>Twenty_One.cs</DependentUpon>
