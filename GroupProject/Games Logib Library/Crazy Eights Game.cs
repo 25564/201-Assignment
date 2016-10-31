@@ -20,6 +20,9 @@ namespace Games_Logic_Library {
         static protected bool isFirstMove;
         static protected Victor GameOver = Victor.Tie;
 
+        /// <summary>
+        /// Intiialise global variables
+        /// </summary>
         public static void SetupGame() {
             hands = new Hand[2] { new Hand(), new Hand() };
 
@@ -30,8 +33,11 @@ namespace Games_Logic_Library {
             GameOver = Victor.None;
 
             CurrentActiveCard = new Card(Suit.Clubs, FaceValue.Eight);
-        }
+        } // end SetupGame
 
+        /// <summary>
+        /// Computer takes its turn as per the rules stated in the spec.
+        /// </summary>
         public static void ComputerPlay() {
             bool mustPass = false;
 
@@ -78,28 +84,49 @@ namespace Games_Logic_Library {
             } else if (EightCards.Count > 0) { // Then Give up and try eight
                 PlayCard(EightCards[0], 1);
             }
-        }
+        } // end ComputerPlay
 
+        /// <summary>
+        /// Return the most recently placed card
+        /// </summary>
+        /// <returns>The Top Card</returns>
         public static Card GetCurrentActiveCard() {
             return CurrentActiveCard;
         }
 
+        /// <summary>
+        /// For use when the Draw deck is empty. Shuffles the dead cards then makes the the draw deck.
+        /// </summary>
         public static void RolloverDeadCards() {
             DrawCards = DeadCards;
             DrawCards.Shuffle();
-        }
+            DeadCards = new CardPile();
+        } //  end RolloverDeadCards
 
+        /// <summary>
+        /// Deals 8 cards to each of teh two players.
+        /// </summary>
         public static void DealInitialHands() {
             hands = new Hand[2] { new Hand(DrawCards.DealCards(8)), new Hand(DrawCards.DealCards(8)) };
-        }
+        } // end DealInitialHands
 
+
+        /// <summary>
+        /// Deals a single card to a player
+        /// </summary>
+        /// <param name="who">The Index of the player being dealt to</param>
         public static void DealCard(int who) {
             hands[who].Add(DrawCards.DealOneCard());
             if (DrawCards.GetCount() == 0) { // If that was the last card in the draw pile
                 RolloverDeadCards();
             }
-        }
+        } // end DealCard
 
+        /// <summary>
+        /// Is it possible for that player to move without drawing
+        /// </summary>
+        /// <param name="who"></param>
+        /// <returns>Can the player move</returns>
         public static bool CanPlay(int who) {
             if (isFirstMove) { // First move of the game by passes the check.
                 return true;
@@ -111,8 +138,13 @@ namespace Games_Logic_Library {
                 }
             }
             return false;
-        }
+        } // end CanPlay
 
+        /// <summary>
+        /// Returns if a certain card can be the next placed on the pile
+        /// </summary>
+        /// <param name="Attempt">The card that is attempting to be placed</param>
+        /// <returns>If the card can be placed</returns>
         public static bool CanPlayCard(Card Attempt) {
             if (isFirstMove) { // First move of the game by passes the check.
                 return true;
@@ -131,13 +163,22 @@ namespace Games_Logic_Library {
             }
 
             return false;
-        }
+        } // end CanPlayCard
 
+        /// <summary>
+        /// Manually set the suit the next card has to be
+        /// </summary>
+        /// <param name="NewSuit"></param>
         public static void SetSuit (Suit NewSuit) {
             // For when an 8 is played and a suit must be manually set
             CurrentSuit = NewSuit;
-        }
+        }// SetSuit
 
+        /// <summary>
+        /// Add a card to the pile, set the active card then remove it from the user hand
+        /// </summary>
+        /// <param name="playCard"></param>
+        /// <param name="who"></param>
         public static void PlayCard(Card playCard, int who) {
             DeadCards.Add(CurrentActiveCard);
             CurrentActiveCard = playCard;
@@ -145,18 +186,30 @@ namespace Games_Logic_Library {
             hands[who].Remove(playCard);
 
             isFirstMove = false;
-        }
+        }// end PlayCard
         
+        /// <summary>
+        /// Return the hand at that index
+        /// </summary>
+        /// <param name="who"></param>
+        /// <returns>a Hand</returns>
         public static Hand getHand(int who) {
             return hands[who];
         }
 
+        /// <summary>
+        /// Sorts the hand at that index by suit and value
+        /// </summary>
+        /// <param name="who"></param>
         public static void SortHand(int who) {
             if (isGameOver() == false) {
                 hands[who].Sort();
             }
-        }
+        } // end SortHand
 
+        /// <summary>
+        /// Checks the state of the game. Is it over?
+        /// </summary>
         public static void checkGameOver() {
             if (getHand(0).GetCount() == 0) {
                 GameOver = Victor.Player;
@@ -174,14 +227,22 @@ namespace Games_Logic_Library {
                     GameOver = Victor.Tie;
                 }
             }
-        }
+        } // end checkGameOver()
 
+        /// <summary>
+        /// Returns the state of the match
+        /// </summary>
+        /// <returns></returns>
         public static bool isGameOver() {
             return GameOver != Victor.None;
-        }
+        } // checkGameOver
 
+        /// <summary>
+        /// Returns the victor (Game state)
+        /// </summary>
+        /// <returns></returns>
         public static Victor getVictor() {
             return GameOver;
-        }
+        } // end getVictor
     }
 }

@@ -24,7 +24,7 @@ namespace GroupProject {
         }
 
         /// <summary>
-        /// Display 
+        /// Display a Hand as a GUI
         /// </summary>
         /// <param name="who"></param>
         /// <param name="hand"></param>
