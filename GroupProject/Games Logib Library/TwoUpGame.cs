@@ -13,23 +13,28 @@ namespace Games_Logic_Library {
         static public int playerScore;
         static public int computerScore;
 
+        // <SetupGame>
         // Initialises variables
-        // TODO XML comments
         public static void SetUpGame() {
             coin1 = new Coin();
             coin2 = new Coin();
             playerScore = 0;
             computerScore = 0;
         }
+        // </SetupGame>
 
-        // Flip tha coins
+        // <TossCoins>
+        // Flips coin 1 and 2 for new values
         public static void TossCoins() {
             // flips coins
             coin1.Flip();
             coin2.Flip();
         }
+        // </TossCoin>
 
+        // <TossOutcome>
         // Check the outcome and update scores
+        // returns a string value for the result
         public static string TossOutcome() {
             string result;
             if (coin1.IsHeads() && coin2.IsHeads()) {
@@ -43,8 +48,11 @@ namespace Games_Logic_Library {
             }
             return result;
         }
+        // </TossOutcome
 
-        // Checks if coins are heads, used for updating images
+        // <isHeads>
+        // Checks if coins are heads, used for updating images in the form
+        // returns true if the coin is heads
         public static bool isHeads(int whichCoin) {
             bool heads = true;
             if (whichCoin == 1) {
@@ -54,11 +62,14 @@ namespace Games_Logic_Library {
             }
             return heads;
         }
+        // </isHeads>
 
+        // Returns players score
         public static int GetPlayerScore() {
             return playerScore;
         }
 
+        // Returns computer's score
         public static int GetComputerScore() {
             return computerScore;
         }

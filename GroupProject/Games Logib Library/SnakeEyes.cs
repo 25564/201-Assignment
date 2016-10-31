@@ -7,6 +7,7 @@ using Low_Level_Objects_Library;
 
 namespace Games_Logic_Library {
     public class SnakeEyes {
+        // Define variables
         static public int rollTotal;
         static public int playerTotal;
         static public int houseTotal;
@@ -15,6 +16,8 @@ namespace Games_Logic_Library {
         static public bool PointsSet;
         static public Die[] dice = new Die[2];
 
+        // <SetupGame>
+        // Initialise variables
         public static void SetUpGame() {
             rollTotal = 0;
             playerTotal = 0;
@@ -24,8 +27,11 @@ namespace Games_Logic_Library {
             dice[0] = new Die();
             dice[1] = new Die();
         }
+        // </SetupGame>
 
-        // Method to check roll of the dice
+        // <PlayRoll>
+        // Rolls the dice, checking the total of the roll
+        // Checks conditions to see who is awarded points
         public static bool PlayRoll() {
             bool RollAgain;
 
@@ -45,6 +51,8 @@ namespace Games_Logic_Library {
             } else if (rollTotal == possiblePoints) {
                 PointsSet = false;
                 RollAgain = false;
+            // Alternatively have a different method used for AnotherRoll...
+            // This seemed more concise
             } else if (possiblePoints == 0) {
                 GetPossiblePoints();
                 PointsSet = true;
@@ -56,35 +64,51 @@ namespace Games_Logic_Library {
 
             return RollAgain;
         }
+        // </PlayRoll> 
 
+        // <FirstRoll>
+        // Plays the first roll of the game
         public static bool FirstRoll() {
             bool RollAgain = PlayRoll();
             return RollAgain;
         }
+        // </FirstRoll>
 
+        // <AnotherRoll>
+        // Plays another roll of the dice
         public static bool AnotherRoll() {
             bool RollAgain = PlayRoll();
             return RollAgain;
         }
+        // </AnotherRoll>
 
+        // <DiceFaceValue>
+        // <param name="whichDie"/>
+        // returns the face value of the specified die
         public static int DiceFacevalue(int whichDie) {
             int DiceValue = dice[whichDie].GetFaceValue();
             return DiceValue;
         }
+        // </DiceFaceValue>
 
+        // Return player points
         public static int GetPlayersPoints() {
             return playerTotal;
         }
 
+        // Return house points
         public static int GetHousePoints() {
             return houseTotal;
         }
 
+        // Defines possible points for player to win
         public static int GetPossiblePoints() {
             possiblePoints = GetRollTotal();
             return possiblePoints;
         }
 
+        // <GetRollTotal>
+        // Method for getting the total of the current dice
         public static int GetRollTotal() {
             int DiceOne = DiceFacevalue(0);
             int DiceTwo = DiceFacevalue(1);
@@ -92,10 +116,14 @@ namespace Games_Logic_Library {
 
             return rollTotal;
         }
+        // </GetRollTotal>
 
+        // <GetRollOutcome>
+        // Determines the outcome of the roll
+        // Returns the outcome as a formatted string
         public static string GetRollOutcome() {
             string outcome;
-
+            
             if (rollTotal == 2) {
                 outcome = String.Format("Player wins {0} points!", 2);
                 playerTotal += 2;
@@ -114,5 +142,6 @@ namespace Games_Logic_Library {
 
             return outcome;
         }
+        // </GetRollOutcome>
     }
 }
