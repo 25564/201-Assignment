@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using Games_Logic_Library;
 
 namespace GroupProject {
+    /// <summary>
+    /// This form class provides a GUI for the Two Up game
+    /// Based off the spec in Part B
+    /// </summary>
     public partial class Two_Up : Form {
 
         // Definitely no magic numbers here

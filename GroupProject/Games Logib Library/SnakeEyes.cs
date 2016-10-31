@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using Low_Level_Objects_Library;
 
 namespace Games_Logic_Library {
+    /// <summary>
+    /// This class is used to control the logic for the Snake Eyes game
+    /// Based of the UML diagram provided in the Part C1 spec
+    /// </summary>
     public class SnakeEyes {
         // Define variables
         static public int rollTotal;

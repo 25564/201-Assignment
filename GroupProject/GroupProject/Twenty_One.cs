@@ -11,6 +11,10 @@ using Low_Level_Objects_Library;
 using Games_Logic_Library;
 
 namespace GroupProject {
+    /// <summary>
+    /// This form class provides a GUI for the Twenty One game
+    /// Based off the spec in Part C2
+    /// </summary>
     public partial class Twenty_One : Form {
         public Twenty_One() {
             InitializeComponent();

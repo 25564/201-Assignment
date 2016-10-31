@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using Games_Logic_Library;
 
 namespace GroupProject {
+    /// <summary>
+    /// This form class provides a GUI for the Snake Eyes game
+    /// Based off the spec in Part C1
+    /// </summary>
     public partial class Snake_Eyes : Form {
 
         const int ANIMATION_LENGTH = 10;

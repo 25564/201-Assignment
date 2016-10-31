@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using Low_Level_Objects_Library;
 
 namespace Games_Logic_Library {
+    /// <summary>
+    /// Class that controls the logic for Two up
+    /// Based off the UML diagram provided in Part B spec
+    /// </summary>
     public static class TwoUpGame {
         // Defines variables
         static public Coin coin1;
