@@ -11,6 +11,10 @@ using Games_Logib_Library;
 
 namespace GroupProject {
     public partial class Snake_Eyes : Form {
+
+        const int ANIMATION_LENGTH = 10;
+        protected int TimerTickCount = 0;
+
         public Snake_Eyes() {
             InitializeComponent();
             SnakeEyes.SetUpGame();
@@ -42,8 +46,13 @@ namespace GroupProject {
         }
 
         private void RollDice_Click(object sender, EventArgs e) {
-            
-            if (SnakeEyes.numRolls == 0) {
+            RollDice.Enabled = false;
+            timer1.Start(); // Plays the animation
+        }
+
+        private void EvaluateDice() {
+            RollDice.Enabled = true;
+            if (SnakeEyes.numRolls == 0) { // If this is the first roll
                 bool RollAgain = SnakeEyes.FirstRoll();
                 SetPictures();
                 CheckOutcome(RollAgain);
@@ -52,7 +61,6 @@ namespace GroupProject {
                 SetPictures();
                 CheckOutcome(RollAgain);
             }
-            
         }
 
         private void ContinueGame_Click(object sender, EventArgs e) {
@@ -77,6 +85,21 @@ namespace GroupProject {
             } else {
                 MessageBox.Show("Nobody won!");
                 HandleEnd();
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e) {
+            if (TimerTickCount > ANIMATION_LENGTH) {
+                timer1.Stop();
+                TimerTickCount = 0;
+                EvaluateDice();
+            } else {
+
+                TimerTickCount++;
+
+                // Purely Visual update of the Dice
+                UpdatePictureBoxImage(pictureBox1, (TimerTickCount % 6));
+                UpdatePictureBoxImage(pictureBox2, ((TimerTickCount + 3) % 6));
             }
         }
     }
