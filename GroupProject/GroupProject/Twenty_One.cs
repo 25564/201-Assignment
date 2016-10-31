@@ -37,8 +37,9 @@ namespace GroupProject {
         }
 
         private void Twenty_One_FormClosing(object sender, FormClosingEventArgs e) {
-            e.Cancel = true;
-            this.Visible = false;
+            
+            //e.Cancel = true;
+            //this.Visible = false;
         }
 
         private void checkPlayerAces() {

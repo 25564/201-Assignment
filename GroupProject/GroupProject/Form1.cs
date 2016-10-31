@@ -56,7 +56,9 @@ namespace GroupProject {
         }
 
         private void ExitBtn_Click(object sender, EventArgs e) {
+            this.Close();
             System.Windows.Forms.Application.Exit();
+            
         }
     }
 }
