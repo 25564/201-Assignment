@@ -131,7 +131,7 @@ namespace GroupProject {
             if (dealerScore != playerScore) { // Not a tie
                 if (playerScore > BLACK_JACK_SCORE) { // Player Busted
                     Twenty_One_Game.IncrementNumOfGamesWon(1);
-                } else if (dealerScore > BLACK_JACK_SCORE { // Dealer Busted
+                } else if (dealerScore > BLACK_JACK_SCORE) { // Dealer Busted
                     Twenty_One_Game.IncrementNumOfGamesWon(0);
                 } else {
                     if (playerScore > dealerScore) { // Player won
