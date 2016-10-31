@@ -29,31 +29,49 @@ namespace GroupProject {
             whichPB.Image = Images.GetCoinImage(isHeads);
         }// end UpdatePictureBoxImage
 
+        // <SetPictures>
+        // Sets the coin pictures to corresponding pictureboxes
         private void SetPictures() {
             UpdatePictureBoxImage(pictureBox1, TwoUpGame.isHeads(1));
             UpdatePictureBoxImage(pictureBox2, TwoUpGame.isHeads(2));
         }
+        // </SetPictures>
 
+        // <CancelButtonClick>
+        // Handles cancelling the game by closing the current form and displaying the home screen
+        // <param name="sender"></param>
+        // <param name="e"></param>
         private void CancelGameBtn_Click(object sender, EventArgs e) {
             Form InitialForm = new Form1();
             InitialForm.Show();
             this.Close();
         }
+        // </CancelButtonClick>
 
+        // <PlayAgainButtonClick>
+        // Resets the game by enabling buttins
+        // <param name="sender"></param>
+        // <param name="e"></param>
         private void PlayAgainBtn_Click(object sender, EventArgs e) {
             ThrowCoinsBtn.Enabled = true;
             PlayAgainBtn.Visible = false;
         }
+        // </PlayAgainButtonClick>
 
+        // <HandleOutcome>
+        // Handles the end of a turn and enables buttons
         private void HandleOutcome() {
             ThrowCoinsBtn.Enabled = false;
             PlayAgainBtn.Visible = true;
         }
+        // </HandleOutcome>
 
         private void AnimateToss() {
             timer1.Start();
         }
 
+        // <TossCoin>
+        // Tosses coins using the logic in the Games Logic Library
         private void TossCoin() {
             // Flip coins
             TwoUpGame.TossCoins();
@@ -78,7 +96,10 @@ namespace GroupProject {
                 HandleOutcome();
             }
         }
+        // </TossCoins>
 
+        // <ThrowCoins>
+        // Disables the button, shows results label, Animates the coin toss
         private void ThrowCoinsBtn_Click(object sender, EventArgs e) {
             // Show the results label
             ResultLbl.Visible = true;

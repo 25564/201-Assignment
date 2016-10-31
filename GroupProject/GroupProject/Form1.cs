@@ -17,6 +17,10 @@ namespace GroupProject {
         // Initial variables
         int SelectedGame;
 
+        // <CheckRadioButtons>
+        // Method checks which radio button is checked on the main screen 
+        // <param name="sender"/>
+        // <param name="e"/>
         private void CoinGame_CheckedChanged(object sender, EventArgs e) {
             if (CoinGame.Checked || DiceGame.Checked || CardGame.Checked) {
                 StartBtn.Enabled = true;
@@ -31,6 +35,12 @@ namespace GroupProject {
             }
         }
 
+        // </CheckRadioButtons>
+
+        // <StartButtonClick>
+        // Closes the current form, and opens the corresponding selected game menus
+        // <param name="sender"/>
+        // <param name="e"/>
         private void StartBtn_Click(object sender, EventArgs e) {
             // 1 = Coin Game
             if (SelectedGame == 1) {
@@ -55,10 +65,16 @@ namespace GroupProject {
             }
         }
 
+        // </StartButtonClick>
+
+        // <ExitButtonClick>
+        // <param name="sender"></param>
+        // <param name="e"></param>
         private void ExitBtn_Click(object sender, EventArgs e) {
             this.Close();
             System.Windows.Forms.Application.Exit();
             
         }
+        // </ExitButtonClick>
     }
 }
