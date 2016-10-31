@@ -26,11 +26,18 @@ namespace GroupProject {
             whichPB.Image = Images.GetDieImage(faceValue);
         }// end UpdatePictureBoxImage
 
+        // <SetPictures>
+        // Sets the coin pictures to corresponding pictureboxes
         private void SetPictures() {
             UpdatePictureBoxImage(pictureBox1, SnakeEyes.DiceFacevalue(0));
             UpdatePictureBoxImage(pictureBox2, SnakeEyes.DiceFacevalue(1));
         }
+        // </SetPictures>
 
+        // <CheckOutcome>
+        // Checks the outcome of the dice roll
+        // Updates the scores
+        // <param name = outcome>
         private void CheckOutcome(bool outcome) {
             
             if (outcome == true) {
@@ -44,12 +51,20 @@ namespace GroupProject {
             PlayerScore.Text = (SnakeEyes.playerTotal).ToString();
             HouseScore.Text = (SnakeEyes.houseTotal).ToString();
         }
+        // </CheckOutcome>
 
+        // <RollDice>
+        // Disables roll dice button and animates the dice
         private void RollDice_Click(object sender, EventArgs e) {
             RollDice.Enabled = false;
             timer1.Start(); // Plays the animation
         }
+        // </RollDice>
 
+        // <EvaludateDice>
+        // Checks the to see if it is the first roll, and calls roll function accordingly
+        // Sets the pictures based on new dice values
+        // Checks outcome
         private void EvaluateDice() {
             RollDice.Enabled = true;
             if (SnakeEyes.numRolls == 0) { // If this is the first roll
@@ -62,19 +77,29 @@ namespace GroupProject {
                 CheckOutcome(RollAgain);
             }
         }
+        // </EvaludateDice>
 
+        // <ContinueGame>
+        // On button click, hides continue game button and enables roll dice button
         private void ContinueGame_Click(object sender, EventArgs e) {
             ContinueGame.Visible = false;
             RollDice.Enabled = true;
             SnakeEyes.possiblePoints = 0;
         }
+        // </ContinueGame>
 
+        // <HandleEnd>
+        // Closes current form to stop possible memory leaks
+        // Opens up the main menu form
         private void HandleEnd() {
             Form InitialForm = new Form1();
             InitialForm.Show();
             this.Close();
         }
+        // </HandleEnd>
 
+        // <CancelGameButtonClick>
+        // Checks the scores of computer and player, displays message accordingly
         private void S_Click(object sender, EventArgs e) {
             if (SnakeEyes.playerTotal > SnakeEyes.houseTotal) {
                 MessageBox.Show("You've won!");
@@ -87,6 +112,7 @@ namespace GroupProject {
                 HandleEnd();
             }
         }
+        // </CancelGameButtonClick>
 
         private void timer1_Tick(object sender, EventArgs e) {
             if (TimerTickCount > ANIMATION_LENGTH) {
