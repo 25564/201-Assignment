@@ -24,6 +24,11 @@ namespace GroupProject {
             Twenty_One_Game.SetUpGame();
         }
 
+        /// <summary>
+        /// Generate GUIs to represent a hand of cards
+        /// </summary>
+        /// <param name="hand"></param>
+        /// <param name="tableLayoutPanel"></param>
         private void DisplayGuiHand(Hand hand, TableLayoutPanel tableLayoutPanel) {
             tableLayoutPanel.Controls.Clear(); // Remove any cards already being shown.
             foreach (Card card in hand) {
@@ -39,14 +44,16 @@ namespace GroupProject {
             }
         }// End DisplayGuiHand
 
-        private void Twenty_One_Load(object sender, EventArgs e) {
 
+        private void Twenty_One_Load(object sender, EventArgs e) {
         }
 
         private void Twenty_One_FormClosing(object sender, FormClosingEventArgs e) {
-  
         }
 
+        /// <summary>
+        /// Ask the user via a popup if they would like the ace to count as 11 or 1
+        /// </summary>
         private void checkPlayerAces() {
             int ignoreCount = Twenty_One_Game.GetNumOfUserAcesWithValueOne();
             foreach (Card card in Twenty_One_Game.GetHand(0)) {
@@ -66,8 +73,13 @@ namespace GroupProject {
             }
 
             AceValueOneLabel.Text = Twenty_One_Game.GetNumOfUserAcesWithValueOne().ToString();
-        }
+        } // End checkPlayerAces
 
+        /// <summary>
+        /// Deal Initial cards to the computer and player then setup controls 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dealButton_Click(object sender, EventArgs e) {
             Twenty_One_Game.ResetTotals();
             Twenty_One_Game.DealOneCardTo(0);
@@ -91,8 +103,11 @@ namespace GroupProject {
             hitButton.Enabled = true;
 
             checkPlayerAction();
-        }
+        } // end dealButtonClick
 
+        /// <summary>
+        /// Check if the players most recent action won the game and update the score label
+        /// </summary>
         private void checkPlayerAction() {
             int Score = Twenty_One_Game.CalculateHandTotal(0);
 
@@ -106,6 +121,9 @@ namespace GroupProject {
             }
         } // End checkPlayerAction
 
+        /// <summary>
+        /// Evalutate who won and incrememnt win count appropriately
+        /// </summary>
         private void calculateWinner() {
             int playerScore = Twenty_One_Game.GetTotalPoints(0);
             int dealerScore = Twenty_One_Game.GetTotalPoints(1);
@@ -128,6 +146,9 @@ namespace GroupProject {
             PlayerGamesWonLabel.Text = Twenty_One_Game.GetNumOfGamesWon(0).ToString();
         } // end calculateWinner()
 
+        /// <summary>
+        /// Reset UI to prepare for next game and display final result
+        /// </summary>
         private void gameOver() {
             if (PlayerBustedLabel.Visible == false) { // Dealer only needs to play if it hasn't already won
                 Twenty_One_Game.PlayForDealer();
@@ -146,6 +167,11 @@ namespace GroupProject {
             dealButton.Enabled = true;
         } // End gameOver()
 
+        /// <summary>
+        /// Testing. No possible to access in final game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void testButton_Click(object sender, EventArgs e) {
             const int testNumOfCardsForDealer = 2;
             const int testNumOfCardsForPlayer = 4;
@@ -155,8 +181,13 @@ namespace GroupProject {
             Hand testHandForPlayer = new Hand(testCardPile.DealCards(testNumOfCardsForPlayer));
             DisplayGuiHand(testHandForDealer, dealerTableLayoutPanel);
             DisplayGuiHand(testHandForPlayer, playerTableLayoutPanel);
-        }
+        }// end TestButtonClick
 
+        /// <summary>
+        /// On click proceed with computer turn and update UI appropraitely
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void standButton_Click(object sender, EventArgs e) {
             Twenty_One_Game.PlayForDealer();
             DealerPointsLabel.Text = Twenty_One_Game.GetTotalPoints(1).ToString();
@@ -167,20 +198,29 @@ namespace GroupProject {
             }
 
             gameOver();
-        }
+        } // end StandButtonClick
 
+        /// <summary>
+        /// Close the form and return to the landing form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e) {
             Form InitialForm = new Form1();
             InitialForm.Show();
             this.Close();
-        }
+        }// end cancelButtonClick
 
-
+        /// <summary>
+        /// on click deal a new card to the player, Update the UI and then check for win  conditions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void hitButton_Click(object sender, EventArgs e) {
             Twenty_One_Game.DealOneCardTo(0);
             DisplayGuiHand(Twenty_One_Game.GetHand(0), playerTableLayoutPanel);
             checkPlayerAces();
             checkPlayerAction();
-        }
+        } // end hitButtonClick
     }
 }
