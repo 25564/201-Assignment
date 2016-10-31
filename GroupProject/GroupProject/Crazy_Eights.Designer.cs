@@ -129,7 +129,6 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(180, 40);
             this.statusLabel.TabIndex = 6;
-            this.statusLabel.Enter += new System.EventHandler(this.statusLabel_Enter);
             // 
             // dealButton
             // 
@@ -143,6 +142,7 @@
             // 
             // sortCardButton
             // 
+            this.sortCardButton.Enabled = false;
             this.sortCardButton.Location = new System.Drawing.Point(232, 414);
             this.sortCardButton.Name = "sortCardButton";
             this.sortCardButton.Size = new System.Drawing.Size(124, 23);

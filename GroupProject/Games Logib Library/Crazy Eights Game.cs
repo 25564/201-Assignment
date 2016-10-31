@@ -7,13 +7,18 @@ using Low_Level_Objects_Library;
 namespace Games_Logic_Library {
     public class Crazy_Eights_Game {
 
+        private const int MAX_HAND_SIZE = 13;
+
+        public enum Victor {None, Player, Computer, Tie};
+
         // Initial Variables
         static protected CardPile DrawCards;
         static protected CardPile DeadCards;
         static protected Card CurrentActiveCard; // Current top of played cards
         static protected Hand[] hands; // Hand[0] is the Player
         static protected Suit CurrentSuit;
-        static protected bool isFirstMove; 
+        static protected bool isFirstMove;
+        static protected Victor GameOver = Victor.Tie;
 
         public static void SetupGame() {
             hands = new Hand[2] { new Hand(), new Hand() };
@@ -22,6 +27,7 @@ namespace Games_Logic_Library {
             DrawCards = new CardPile(true);
             DeadCards = new CardPile();
             DrawCards.Shuffle();
+            GameOver = Victor.None;
 
             CurrentActiveCard = new Card(Suit.Clubs, FaceValue.Eight);
         }
@@ -140,13 +146,42 @@ namespace Games_Logic_Library {
 
             isFirstMove = false;
         }
-
+        
         public static Hand getHand(int who) {
             return hands[who];
         }
 
         public static void SortHand(int who) {
-            hands[who].Sort();
+            if (isGameOver() == false) {
+                hands[who].Sort();
+            }
+        }
+
+        public static void checkGameOver() {
+            if (getHand(0).GetCount() == 0) {
+                GameOver = Victor.Player;
+                return;
+            }
+
+            if (getHand(1).GetCount() == 0) {
+                GameOver = Victor.Computer;
+                return;
+            }
+
+            // Is there a tie
+            if (getHand(0).GetCount() == MAX_HAND_SIZE && getHand(1).GetCount() == MAX_HAND_SIZE) {
+                if (CanPlay(0) == false && CanPlay(1) == false) {
+                    GameOver = Victor.Tie;
+                }
+            }
+        }
+
+        public static bool isGameOver() {
+            return GameOver != Victor.None;
+        }
+
+        public static Victor getVictor() {
+            return GameOver;
         }
     }
 }

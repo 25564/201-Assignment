@@ -17,7 +17,6 @@ namespace GroupProject {
             InitializeComponent();
             this.drawPilePictureBox.Image = Images.GetBackOfCardImage();
             this.statusLabel.Text = "Click Deal to start the game.";
-            Crazy_Eights_Game.SetupGame();
         }
 
         private void DisplayHand(int who, Hand hand, TableLayoutPanel tableLayoutPanel) {
@@ -42,23 +41,36 @@ namespace GroupProject {
         private void CardClicked(object sender, EventArgs e) {
             PictureBox ObjectClicked = (PictureBox)sender;
             Card CardClicked = (Card)ObjectClicked.Tag;
+            if (Crazy_Eights_Game.isGameOver() == false) {
+                if (Crazy_Eights_Game.CanPlayCard(CardClicked)) {
+                    Crazy_Eights_Game.PlayCard(CardClicked, 0);
 
-            if (Crazy_Eights_Game.CanPlayCard(CardClicked)) {
-                Crazy_Eights_Game.PlayCard(CardClicked, 0);
+                    if (CardClicked.GetFaceValue() == FaceValue.Eight) { // If the player uses an 8
+                        var SelectorForm = new SuitSelectorCrazyEights();
 
-                if (CardClicked.GetFaceValue() == FaceValue.Eight) { // If the player uses an 8
-                    var SelectorForm = new SuitSelectorCrazyEights();
-
-                    if (SelectorForm.ShowDialog(this) == DialogResult.OK) {
-                        Crazy_Eights_Game.SetSuit(SelectorForm.ChosenSuit());
+                        if (SelectorForm.ShowDialog(this) == DialogResult.OK) {
+                            Crazy_Eights_Game.SetSuit(SelectorForm.ChosenSuit());
+                        }
                     }
-                }
 
-                UpdateCardDisplay();
-                RefreshTheFormThenPause();
-                Crazy_Eights_Game.ComputerPlay();
-            } else {
-                statusLabel.Text = "You cannot play this card at this moment";
+                    UpdateCardDisplay();
+                    isGameOver();
+
+                    if (Crazy_Eights_Game.isGameOver() == false) {
+                        RefreshTheFormThenPause();
+                        Crazy_Eights_Game.ComputerPlay();
+                        isGameOver();
+                        if (Crazy_Eights_Game.isGameOver() == false) { //Did the computer just win?
+                            if (Crazy_Eights_Game.CanPlay(0)) {
+                                statusLabel.Text = "Please Select a Card to play.";
+                            } else {
+                                statusLabel.Text = "There is no move you can make. Please select from the deck.";
+                            }
+                        }
+                    }
+                } else {
+                    statusLabel.Text = "You cannot play this card at this moment";
+                }
             }
 
             UpdateCardDisplay();
@@ -69,24 +81,24 @@ namespace GroupProject {
             DisplayHand(1, Crazy_Eights_Game.getHand(1), ComputerCardPanel);
             placedCardsPictureBox.Image = Images.GetCardImage(Crazy_Eights_Game.GetCurrentActiveCard());
         }
-
+        
         private void drawPilePictureBox_Click(object sender, EventArgs e) {
-            if (Crazy_Eights_Game.CanPlay(0) == false) {
-                if (Crazy_Eights_Game.getHand(0).GetCount() < 13) {
-                    Crazy_Eights_Game.DealCard(0);
-                    UpdateCardDisplay();
+            if (Crazy_Eights_Game.isGameOver() == false) { // Don't draw before a game starts
+                if (Crazy_Eights_Game.CanPlay(0) == false) {
+                    if (Crazy_Eights_Game.getHand(0).GetCount() < 13) {
+                        Crazy_Eights_Game.DealCard(0);
+                        UpdateCardDisplay();
+                    }
+                } else {
+                    statusLabel.Text = "There is cards you can play.";
                 }
-            } else {
-                statusLabel.Text = "There is cards you can play.";
             }
         }
 
-        private void statusLabel_Enter(object sender, EventArgs e) {
-
-        }
-
         private void dealButton_Click(object sender, EventArgs e) {
+            Crazy_Eights_Game.SetupGame();
             Crazy_Eights_Game.DealInitialHands();
+            sortCardButton.Enabled = true;
             UpdateCardDisplay();
         }
 
@@ -97,6 +109,23 @@ namespace GroupProject {
 
         private void cancelButton_Click(object sender, EventArgs e) {
 
+        }
+
+        private void isGameOver() {
+            Crazy_Eights_Game.checkGameOver();
+            if (Crazy_Eights_Game.isGameOver()) {
+                switch (Crazy_Eights_Game.getVictor()) { // Display Relevant Final message depending on victor
+                    case Crazy_Eights_Game.Victor.Computer:
+                        statusLabel.Text = "You lost. Press Deal to start again";
+                        break;
+                    case Crazy_Eights_Game.Victor.Player:
+                        statusLabel.Text = "You Won. Press Deal to start again";
+                        break;
+                    case Crazy_Eights_Game.Victor.Tie:
+                        statusLabel.Text = "It was a tie. Press Deal to start again";
+                        break;
+                }
+            }
         }
 
         private static void RefreshTheFormThenPause() { // Otherwise the computer plays too fast
